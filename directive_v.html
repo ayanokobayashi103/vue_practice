@@ -1,0 +1,17 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<!-- ディレクティブ＝vuejs専用の属性  'v-' で属性を持たせる-->
+<div id="app">
+    <!-- 下記の二行は全く同じ意味を持つ -->
+    <p>{{ message }}</p>
+    <a v-text="message"></a>
+</div>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        message: 'helloworld'
+    },
+})
+</script>

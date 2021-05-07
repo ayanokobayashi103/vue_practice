@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- vue.jsファイル読み込むタグオフラインでも使用可能になる -->
+    <script src="vue.js"></script>
+    <div id="app">
+        <!-- 1、文字を表示させる -->
+        <p>{{ message }}</p>
+        <!-- 2、ボタンをクリックで文字反転 -->
+        <!-- v-on:domイベントを書く -->
+        <button v-on:click="reverseMessage">メッセージ</button>
+    </div>
+    
+</body>
+<script>
+// vueインスタンス宣言この中に書かれているものにvueを対応させる
+new Vue({
+    // elプロパティ＝HTMLのどこのタグに対応しているのか　idなのかclassなのか
+    el: '#app',
+    data: {
+        message: 'helloworld'
+    },
+    // mothodsは色々なインスタンスを持つことができる
+    methods: {
+        reverseMessage: function() {
+            // thisでvueインスタンスを指定できる　その後の式はJavescrupt
+            this.message = this.message.split('').reverse().join('')
+        }
+    }
+})
+
+</script>
+</html>

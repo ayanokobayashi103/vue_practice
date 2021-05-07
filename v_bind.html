@@ -1,0 +1,18 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<!-- v-bindディレクティブを学ぼう！ -->
+<div id="app">
+    <!-- v-bind:は引数をとることができる2つ値をとれる　urlとurlのリンク的な考えかな？ -->
+    <a v-bind:href="url">Google</a>
+    <!-- v-bindは省略できるがつけるならつける付けないならつけないでどちらかに統一しよう -->
+    <a :href="url">Google</a>
+</div>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        url: 'https://google.com'
+    },
+})
+</script>
