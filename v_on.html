@@ -1,0 +1,43 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<!-- domのイベントが発生した時に関数の処理を実行したい時 -->
+<div id="app">
+    <p>現在{{ number }}回クリックされています</p>
+    <!-- v-on:の後にはdomのイベントの名前を入れる -->
+    <button v-on:click="number ++">カウントアップ</button>
+
+    <!-- 下にある定義してあるメソッドを呼び出しているこちらが正しい書き方！上記の書き方はあまりしない -->
+    <button v-on:click="countUp">カウントアップ</button>
+
+    <!-- domイベント。マウス乗せた時動いている地点をxとyで表示させる -->
+    <p v-on:mousemove="mouseMovePosition">カーソルを乗せてください</p>
+    <!-- 引数:domイベントの引数は$をつける -->
+    <p v-on:mouseover="mouseOverPosition(2, $event)">2で割っている位置</p>
+    <p>X:{{ x }},Y:{{ y }}</p>
+</div>
+
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        number: 0,
+        x: 0,
+        y:0
+    },
+    // 関数をたくさん保持できるプロパティの事==methods
+    methods: {
+        countUp: function() {
+            this.number ++
+        },
+        // eventの箇所は名前はなんでも可能だがeventが慣例なの覚えよう。
+        mouseMovePosition: function(event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+        },
+        mouseOverPosition: function(divideNumber, event) {
+            this.x = event.clientX / divideNumber;
+            this.y = event.clientY / divideNumber;
+        }
+    }
+})
+</script>

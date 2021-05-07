@@ -6,13 +6,25 @@
     <a v-bind:href="url">Google</a>
     <!-- v-bindは省略できるがつけるならつける付けないならつけないでどちらかに統一しよう -->
     <a :href="url">Google</a>
+
+    <!-- 各カッコの中にプロパティを入れる v-bindの引数を扱うことができる-->
+    <a :[attribute]="url">Google</a>
+    <!-- v-bindで引数をとってこれます -->
+    <a v-bind="twitterObject">Twitter</a>
 </div>
 
 <script>
 new Vue({
     el: '#app',
     data: {
-        url: 'https://google.com'
-    },
+        url: 'https://google.com',
+        // 名前はなんでもよい
+        attribute: 'href',
+        // 複数属性を持たせたい時オブジェクトを作成しまとめることができる
+        twitterObject: {
+            href: 'https://twitter.com',
+            id: 3
+        }
+    }
 })
 </script>
